@@ -1,0 +1,7 @@
+1. A pagina é baseada em teste de token, logo no primeiro acesso é necessario verificar se ha algum token em aberto
+
+2. Validar a sessao
+
+3. Caso nao exita um MIDLEWARE, devemos fabrica-lo
+
+4. Para que a classe Users nao fira o principio SOLID ao fazer a verificacao de Usuario, e como a verificacao vai ser usada outas areas do sistema, o ideal e projetar o mvc com um novo integrante, sendo ele o Handlres, o qual vai ficar responsavel pela BUROCRACIA do sistema.
