@@ -2,22 +2,32 @@
 namespace src\controllers;
 
 use \core\Controller;
-use \src\handlers\LoginHandler; //liberando o uso do handler
+use \src\handlers\UserHandler;
+use \src\handlers\PostHandler;
 
 class HomeController extends Controller {
 
-    private $loggedUser; //armazenamento do token
+    private $loggedUser;
 
-    public function __construct() { //a funcao construtora vai ser a primeria a rodar, entao caso o token nao seja reconhecido, ele ja redireciona
-        $this->$loggedUser = LoginHandler::checkLogin(); //aqui e criado a instancia de armazenamento do login
-        if($this->$loggedUser === false) {
-
+    public function __construct() {
+        $this->loggedUser = UserHandler::checkLogin();
+        if($this->loggedUser === false) {
             $this->redirect('/login');
         }
     }
 
     public function index() {
-        $this->render('home', ['nome' => 'Rodrigo']);
-     }
+        $page = intval(filter_input(INPUT_GET, 'page'));
+
+        $feed = PostHandler::getHomeFeed(
+            $this->loggedUser->id,
+            $page
+        );
+
+        $this->render('home', [
+            'loggedUser' => $this->loggedUser,
+            'feed' => $feed
+        ]);
+    }
 
 }

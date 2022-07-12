@@ -2,8 +2,7 @@
 namespace src\controllers;
 
 use \core\Controller;
-use \src\handlers\LoginHandler;
-
+use \src\handlers\UserHandler;
 
 class LoginController extends Controller {
 
@@ -16,19 +15,19 @@ class LoginController extends Controller {
         $this->render('signin', [
             'flash' => $flash
         ]);
-     }
+    }
 
-     public function signinAction() {
+    public function signinAction() {
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $password = filter_input(INPUT_POST, 'password');
 
         if($email && $password) {
-            $token = LoginHandler::verifyLogin($email , $password);
+            $token = UserHandler::verifyLogin($email, $password);
             if($token) {
                 $_SESSION['token'] = $token;
                 $this->redirect('/');
             } else {
-                $_SESSION['flash'] = 'Email e/ou senha nao conferem.';
+                $_SESSION['flash'] = 'E-mail e/ou senha não conferem.';
                 $this->redirect('/login');
             }
         } else {
@@ -36,7 +35,7 @@ class LoginController extends Controller {
         }
     }
 
-     public function signup() {
+    public function signup() {
         $flash = '';
         if(!empty($_SESSION['flash'])) {
             $flash = $_SESSION['flash'];
@@ -45,45 +44,44 @@ class LoginController extends Controller {
         $this->render('signup', [
             'flash' => $flash
         ]);
-     }
+    }
 
-     public function signupAction() {
+    public function signupAction() {
         $name = filter_input(INPUT_POST, 'name');
-        $birthdate = filter_input(INPUT_POST, 'birthdate');
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $password = filter_input(INPUT_POST, 'password');
+        $birthdate = filter_input(INPUT_POST, 'birthdate');
 
-        if($name && $birthdate && $email && $password) {
+        if($name && $email && $password && $birthdate) {
             $birthdate = explode('/', $birthdate);
             if(count($birthdate) != 3) {
-                $_SESSION['flash'] = 'Data de nascimento inválida';
-                //$this->redirect('/cadastro');
-                echo 'erro1';
+                $_SESSION['flash'] = 'Data de nascimento inválida!';
+                $this->redirect('/cadastro');
             }
 
             $birthdate = $birthdate[2].'-'.$birthdate[1].'-'.$birthdate[0];
             if(strtotime($birthdate) === false) {
-                $_SESSION['flash'] = 'Data de nascimento inválida';
-                //$this->redirect('/cadastro');
-                echo 'erro2';
+                $_SESSION['flash'] = 'Data de nascimento inválida!';
+                $this->redirect('/cadastro');
             }
 
-            if(LoginHandler::emailExistis($email) === false) {
-                $token = LoginHandler::addUser($name, $birthdate, $email, $password);
+            if(UserHandler::emailExists($email) === false) {
+                $token = UserHandler::addUser($name, $email, $password, $birthdate);
                 $_SESSION['token'] = $token;
-                //$this->redirect('/');
-                print_r($_SESSION['token']);
-                echo 'cadastro';
+                $this->redirect('/');
             } else {
-                $_SESSION['flash'] = 'E-mail já cadastrado.';
-                //$this->redirect('/cadastro');
-                echo 'erro3';
+                $_SESSION['flash'] = 'E-mail já cadastrado!';
+                $this->redirect('/cadastro');
             }
+
         } else {
-            echo 'erro 4';
-            //$this->redirect('/cadastro');
+            $this->redirect('/cadastro');
         }
-     }
-    
+    }
+
+    public function logout() {
+        $_SESSION['token'] = '';
+        $this->redirect('/login');
+    }
 
 }

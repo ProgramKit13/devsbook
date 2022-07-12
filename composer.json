@@ -1,7 +1,6 @@
 {
     "require": {
-        "clancats/hydrahon": "^1.1",
-        "monolog/monolog": "^1.27"
+        "clancats/hydrahon": "^1.1"
     },
     "autoload": {
         "psr-4": {

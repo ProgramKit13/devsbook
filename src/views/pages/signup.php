@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Login - Devsbook</title>
+    <title>Cadastro - Devsbook</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/>
     <link rel="stylesheet" href="<?=$base;?>/assets/css/login.css" />
 </head>
@@ -14,26 +14,25 @@
     </header>
     <section class="container main">
         <form method="POST" action="<?=$base;?>/cadastro">
-        <?php if(!empty($flash)): ?>
-            <div class="flash"><?php echo $flash;?></div>
-        <?php endif; ?>
+            <?php if(!empty($flash)): ?>
+                <div class="flash"><?php echo $flash; ?></div>
+            <?php endif; ?>
 
-            <input placeholder="Digite seu nome completo" class="input" type="text" name="name" />
+            <input placeholder="Digite seu Nome Completo" class="input" type="text" name="name" />
 
-            <input placeholder="Digite sua data de nascimento" class="input" type="text" name="birthdate" id="birthdate"/>
-            
-            <input placeholder="Digite seu e-mail" class="input" type="email" name="email" />
+            <input placeholder="Digite seu E-mail" class="input" type="email" name="email" />
 
-            <input placeholder="Digite sua senha" class="input" type="password" name="password" />
+            <input placeholder="Digite sua Senha" class="input" type="password" name="password" />
 
-            <input class="button" type="submit" value="Cadastrar" />
+            <input placeholder="Digite sua Data de Nascimento" class="input" type="text" name="birthdate" id="birthdate" />
 
-            <a href="<?=$base;?>/login">Já tem cadastro? Faça o login</a>
+            <input class="button" type="submit" value="Fazer cadastro" />
+
+            <a href="<?=$base;?>/login">Já tem conta? Faça o login</a>
         </form>
     </section>
 
 <script src="https://unpkg.com/imask"></script>
-
 <script>
 IMask(
     document.getElementById('birthdate'),
