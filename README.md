@@ -1,5 +1,5 @@
 ## Sobre o projeto e suas tecnologias
-Este projeto é um clone da aplicação Facebook realizado pelo professor Bonieky Lacerda no curso da B7Web, apresentando funcionalidades como curtir, adicionar e remover amigos, fazer upload de fotos, fazer comentarios, visualizar posts, cadastrar usuario, remover usuario, checar perfil e outras mais. 
+Este projeto é um clone da aplicação Facebook realizado pelo professor Bonieky Lacerda no curso da B7Web, apresentando funcionalidades como curtir, adicionar e remover amigos, fazer upload de fotos, fazer comentarios, visualizar posts, cadastrar usuario, remover usuario, checar perfil e outras mais, utilizando o padrão MVC. 
 
 As tecnologias utilizadas foram:
 
