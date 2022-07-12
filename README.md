@@ -1,7 +1,7 @@
 ## Sobre o projeto e suas tecnologias
 Este projeto foi realizado através da b7Web, com o professor Bonieky. Nele foram usadas as seguintes tecnologias:
 
-[![texto alternativo](http://i.imgur.com/tXSoThF.png)](http://www.twitter.com/meunome "texto título")
+[!(http://i.imgur.com/tXSoThF.png)])
 
 
 ## Instalação
