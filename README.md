@@ -1,3 +1,8 @@
+## Sobre o projeto e suas tecnologias
+Este projeto foi realizado através da b7Web, com o professor Bonieky. Nele foram usadas as seguintes tecnologias:
+https://www.flaticon.com/br/icone-gratis/php_5968332?term=php&page=1&position=1&page=1&position=1&related_id=5968332&origin=tag
+
+
 ## Instalação
 Você pode clonar este repositório OU baixar o .zip
 
