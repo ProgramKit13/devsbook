@@ -1,6 +1,8 @@
 ## Sobre o projeto e suas tecnologias
 Este projeto foi realizado através da b7Web, com o professor Bonieky. Nele foram usadas as seguintes tecnologias:
-https://www.flaticon.com/br/icone-gratis/php_5968332?term=php&page=1&position=1&page=1&position=1&related_id=5968332&origin=tag
+
+[1]: http://www.twitter.com/meunome
+[1.1]: http://i.imgur.com/tXSoThF.png (texto título)
 
 
 ## Instalação
